@@ -1,0 +1,38 @@
+.main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 90%;
+  margin: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+.header-logo-img {
+  margin: 20px;
+}
+
+.header-logo-text {
+  font-size: 28px;
+  color: #46a358;
+}
+
+.header-menu {
+  margin: 20px;
+  font-family: "Cera Pro";
+  font-size: 22px;
+  color: #3d3d3d;
+}
+.header-shop-menu-a {
+  margin: 20px;
+}

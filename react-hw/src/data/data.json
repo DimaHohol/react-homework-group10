@@ -1,0 +1,72 @@
+{
+  "products": [
+    {
+      "name": "Barberton Daisy",
+      "price": 119,
+      "img_url": "/image/plants-img/1.svg",
+      "id": "1",
+      "discount": 10,
+      "isFavorite": false
+    },
+    {
+      "name": "Kruzo Aero Chair",
+      "price": 169,
+      "img_url": "/image/plants-img/2.svg",
+      "id": "2",
+      "discount": 5,
+      "isFavorite": false
+    },
+    {
+      "name": "Ergonomic Chair",
+      "price": 199,
+      "img_url": "/image/plants-img/3.svg",
+      "id": "3",
+      "discount": 5,
+      "isFavorite": false
+    },
+    {
+      "name": "Nordic Chair",
+      "price": 129,
+      "img_url": "/image/plants-img/4.svg",
+      "id": "4",
+      "isFavorite": false
+    },
+    {
+      "name": "Kruzo Aero Chair",
+      "price": 139,
+      "img_url": "/image/plants-img/5.svg",
+      "id": "5",
+      "isFavorite": false
+    },
+    {
+      "name": "Ergonomic Chair",
+      "price": 179,
+      "img_url": "/image/plants-img/6.svg",
+      "id": "6",
+      "isFavorite": false
+    },
+    {
+      "name": "Nordic Chair",
+      "price": 99,
+      "img_url": "/image/plants-img/7.svg",
+      "id": "7",
+      "discount": 20,
+      "isFavorite": false
+    },
+    {
+      "name": "Kruzo Aero Chair",
+      "price": 59,
+      "img_url": "/image/plants-img/8.svg",
+      "id": "8",
+      "discount": 15,
+      "isFavorite": false
+    },
+    {
+      "name": "Ergonomic Chair",
+      "price": 39,
+      "img_url": "/image/plants-img/9.svg",
+      "id": "9",
+      "isFavorite": false
+    }
+  ]
+}
