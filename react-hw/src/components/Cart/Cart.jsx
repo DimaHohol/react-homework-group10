@@ -1,35 +1,18 @@
-import { React, Component } from "react";
-// import data from "./data/data.json";
-import "./Cart.css";
+import { Component } from "react";
+import CartItem from "./CartItem/CartItem";
 
 export default class Cart extends Component {
-  state = {
-    cartItems: [],
-    cartItemsFavorite: [],
-  };
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
-      <>
-        <div className="cart">
-          <div className="cart-img">
-            <img className="img" src="/image/body/image 1.svg"></img>
-          </div>
-          <div className="buttons">
-            <button className="button-buy">
-              <img src="/image/body/buy.svg"></img>
-            </button>
-            <button className="button-fav">
-              <img src="/image/body/fav.svg"></img>
-            </button>
-          </div>
-          <div className="cart-name">
-            <h4 className="name">Angel Wing Begonia</h4>
-          </div>
-          <div className="cart-price">
-            <h4 className="price">$169.00</h4>
-          </div>
-        </div>
-      </>
+      <div className="cart">
+        {this.props.cartData.map((item) => (
+          <CartItem item={item} key={Math.random()} />
+        ))}
+      </div>
     );
   }
 }

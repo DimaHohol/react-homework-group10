@@ -22,6 +22,22 @@
   margin: 20px;
 }
 
+.header-shop-menu-bascket {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.header-shop-menu-bascket-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  border: solid;
+  border-radius: 50%;
+  border-color: #46a358;
+  width: 20px;
+  height: 20px;
+}
+
 .header-logo-text {
   font-size: 28px;
   color: #46a358;
@@ -35,4 +51,13 @@
 }
 .header-shop-menu-a {
   margin: 20px;
+}
+
+.body {
+  display: flex;
+}
+
+.body-left {
+  display: flex;
+  flex-wrap: wrap;
 }

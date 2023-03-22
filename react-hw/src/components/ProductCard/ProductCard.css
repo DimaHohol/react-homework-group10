@@ -1,11 +1,14 @@
 .cart {
-  /* border: solid;
-  border-width: 2px;
-  border-color: #46a358; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   border-radius: 20px;
   width: 258px;
   height: 300px;
   background: #fbfbfb;
+  margin: 10px;
 }
 
 /* .cart-img {
@@ -17,6 +20,7 @@
 .img {
   border-radius: 50%;
   width: 100%;
+  width: 50%;
 }
 
 .buttons {
@@ -58,7 +62,7 @@
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
-  line-height: 16px;
+  line-height: 10px;
 
   color: #46a358;
 }
