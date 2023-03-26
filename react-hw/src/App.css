@@ -53,6 +53,12 @@
   margin: 20px;
 }
 
+.header-shop-menu-img {
+  width: 25px;
+  height: 25px;
+  margin: 15px;
+}
+
 .body {
   display: flex;
 }
@@ -60,4 +66,5 @@
 .body-left {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }

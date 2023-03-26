@@ -10,12 +10,14 @@ export default class CartItem extends Component {
     return (
       <>
         <div className="cart-item">
-          <div className="cart-item-name">
-            <p>{this.props.item.name}</p>
+          <div className="cart-item-info">
+            <p className="cart-item-info-name">{this.props.item.name}</p>
+            <p className="cart-item-info-price">${this.props.item.price}</p>
           </div>
-          <div className="cart-item-price">
+          {/* <div className="cart-item-price">
             <p>${this.props.item.price}</p>
-          </div>
+
+          </div> */}
 
           <p>{this.props.item.quantity}</p>
         </div>

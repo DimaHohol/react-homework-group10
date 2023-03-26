@@ -12,6 +12,9 @@ function ProductList(props) {
             onQuantityAdd={(quantity) => {
               props.onProductAdd(quantity, product.id);
             }}
+            onFavQuatityAdd={(quantity) => {
+              props.onFavoriteAdd(quantity, product.id);
+            }}
           />
         );
       })}

@@ -1,0 +1,146 @@
+.main-modal-window {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-body {
+  display: flex;
+  height: 500px;
+  width: 500px;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  min-height: 20px;
+  min-width: 100px;
+  box-shadow: 0px 0px 2px 2px rgb(0, 0, 0);
+  text-decoration: #ffffff;
+}
+
+.button-modal {
+  margin: 10px;
+  border: none;
+  border-radius: 2px;
+  min-height: 20px;
+  min-width: 50px;
+  text-decoration: #ffffff;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.button-modal-x {
+  background: non;
+  border: 2px, solid, #ffffff;
+  border: 0ch;
+  width: 20px;
+  height: 50px;
+}
+
+/* Modal Window */
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* z-index: 98; */
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal {
+  position: relative;
+  z-index: 99;
+  width: 100%;
+  max-width: 26rem;
+  max-height: 100%;
+}
+.modal-close {
+  position: absolute;
+  top: -1.5rem;
+  right: 0;
+  padding: 5px;
+  border: 0;
+  -webkit-appearance: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+}
+
+.modal-body {
+  border-radius: 4px;
+  background-color: #3c5d50;
+  border-radius: 10px;
+}
+
+.modal-body-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #3c5d50;
+  height: 50px;
+}
+.modal-body-content {
+  display: flex;
+  padding: 1.25rem 1.5rem;
+}
+.modal-body-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Cards */
+
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+.card {
+  flex: 1 0 250px;
+  box-shadow: 0 1px 1rem -4px #000;
+  background: #fff;
+  margin: 1rem;
+  overflow: hidden;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 250ms ease-in-out;
+
+  img {
+    width: 250px;
+    height: 250px;
+    object-fit: center;
+  }
+
+  &:hover {
+    box-shadow: 0 4px 1rem -4px #000;
+    transform: translateY(-3px);
+  }
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+@media screen and (max-width: 625px) {
+  .container {
+    width: 100%;
+  }
+
+  .cards-container {
+    padding: 0.5rem;
+  }
+
+  .card {
+    margin: 0.5rem;
+  }
+}

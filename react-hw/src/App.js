@@ -1,6 +1,6 @@
 import { React, Component } from "react";
-import Cart from "./components/Cart/Cart";
 import "./App.css";
+import Cart from "./components/Cart/Cart";
 import data from "./data/data.json";
 import ProductList from "./components/ProductList/ProductList";
 
@@ -15,6 +15,15 @@ export default class App extends Component {
     product.quantity = quantity;
     this.setState((prevState) => ({
       cartItems: [...prevState.cartItems, product],
+    }));
+  };
+
+  addToFavorite = (quantity, id) => {
+    const product = data.products.filter((item) => item.id === id)[0];
+    product.quantity = quantity;
+    product.isFavorite = true;
+    this.setState((prevState) => ({
+      cartItemsFavorite: [...prevState.cartItemsFavorite, product],
     }));
   };
 
@@ -72,6 +81,13 @@ export default class App extends Component {
             <div className="header-shop-menu">
               <a className="header-shop-menu-bascket">
                 <div className="header-shop-menu-bascket-number">
+                  {this.state.cartItemsFavorite.length}
+                </div>
+                <img
+                  className="header-shop-menu-img"
+                  src="/image/header/heart-svgrepo-com.svg"
+                ></img>
+                <div className="header-shop-menu-bascket-number">
                   {this.state.cartItems.length}
                 </div>
                 <img
@@ -84,13 +100,18 @@ export default class App extends Component {
           <div className="info"></div>
           <div className="body">
             <div className="body-left">
-              <ProductList onProductAdd={this.addToCart} data={data.products} />
+              <ProductList
+                onProductAdd={this.addToCart}
+                data={data.products}
+                onFavoriteAdd={this.addToFavorite}
+              />
             </div>
             <div className="body-right">
-              <div className="carts">
-                <h2>Shoping Cart</h2>
-                <Cart cartData={this.state.cartItems} />
-              </div>
+              <Cart text={"Shoping Cart"} cartData={this.state.cartItems} />
+              <Cart
+                text={"Favorite Cart"}
+                cartData={this.state.cartItemsFavorite}
+              />
             </div>
           </div>
           <div className="footer"></div>
