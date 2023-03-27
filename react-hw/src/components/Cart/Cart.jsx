@@ -1,6 +1,7 @@
 import { Component } from "react";
 import CartItem from "./CartItem/CartItem";
 import "../Cart/CartItem/CartItem.css";
+import PropTypes from "prop-types";
 
 export default class Cart extends Component {
   constructor(props) {
@@ -20,3 +21,7 @@ export default class Cart extends Component {
     );
   }
 }
+
+Cart.propTypes = {
+  cartData: PropTypes.array,
+};

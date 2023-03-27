@@ -1,12 +1,15 @@
 import { Component } from "react";
 import "./ProductCard.css";
 import Modal from "../Modal/Modal";
+import PropTypes from "prop-types";
 
 export default class ProductCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       value: "",
+      isFavorite: false,
+      buttonColor: this.props.data.isFavorite ? "red" : "gray",
       modalAddToBascket: false,
       modalAddToFavorite: false,
     };
@@ -26,10 +29,8 @@ export default class ProductCard extends Component {
 
   onClickHandlerFav = () => {
     this.props.onFavQuatityAdd(this.state.value);
-    this.setState({ value: "" });
-    this.setState(() => {
-      return { modalAddToBascket: false, modalAddToFavorite: false };
-    });
+    this.setState({ value: "", isFavorite: true, buttonColor: "red" });
+    this.setState({ buttonColor: "red" });
   };
 
   openModalBascket = () => {
@@ -60,20 +61,23 @@ export default class ProductCard extends Component {
             add={<button onClick={this.onClickHandler}>Add</button>}
           />
         )}
-        {this.state.modalAddToFavorite && (
-          <Modal
-            closeModal={this.closeModal}
-            text={"Add this product to Favorite Cart ?"}
-            add={<button onClick={this.onClickHandlerFav}>Add</button>}
-          />
-        )}
 
         <div className="cart">
           <div className="cart-img">
-            <img
-              className="cart-favheart-img"
-              src="/image/header/heart-svgrepo-com.svg"
-            ></img>
+            {/* {this.state.isFavorite && (
+              <img
+                className="cart-favheart-img"
+                src="/image/header/heart-svgrepo-com.svg"
+                alt="favorite"
+              />
+            )} */}
+            {/* className="button-fav" */}
+            <button
+              onClick={this.onClickHandlerFav}
+              style={{ backgroundColor: this.state.buttonColor }}
+            >
+              <img src="/image/body/fav.svg"></img>
+            </button>
           </div>
           <img className="img" src={this.props.data.img_url}></img>
 
@@ -88,12 +92,15 @@ export default class ProductCard extends Component {
             <button className="button-buy" onClick={this.openModalBascket}>
               <img src="/image/body/buy.svg"></img>
             </button>
-            <button className="button-fav" onClick={this.openModalFavorite}>
-              <img src="/image/body/fav.svg"></img>
-            </button>
           </div>
         </div>
       </>
     );
   }
 }
+
+ProductCard.propTypes = {
+  data: PropTypes.object,
+  onQuantityAdd: PropTypes.func,
+  onAddToFavorite: PropTypes.func,
+};

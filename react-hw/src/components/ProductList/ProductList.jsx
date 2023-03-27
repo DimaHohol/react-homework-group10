@@ -1,10 +1,10 @@
 import ProductCard from "../ProductCard/ProductCard";
+import PropTypes from "prop-types";
 
 function ProductList(props) {
   return (
     <>
       {props.data.map((product) => {
-        // console.log(product);
         return (
           <ProductCard
             data={product}
@@ -23,3 +23,10 @@ function ProductList(props) {
 }
 
 export default ProductList;
+
+ProductList.propTypes = {
+  id: PropTypes.string,
+  data: PropTypes.array,
+  addToFavorite: PropTypes.func,
+  onProductAdd: PropTypes.func,
+};
