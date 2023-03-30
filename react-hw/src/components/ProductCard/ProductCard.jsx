@@ -64,14 +64,6 @@ export default class ProductCard extends Component {
 
         <div className="cart">
           <div className="cart-img">
-            {/* {this.state.isFavorite && (
-              <img
-                className="cart-favheart-img"
-                src="/image/header/heart-svgrepo-com.svg"
-                alt="favorite"
-              />
-            )} */}
-            {/* className="button-fav" */}
             <button
               onClick={this.onClickHandlerFav}
               style={{ backgroundColor: this.state.buttonColor }}
@@ -88,7 +80,6 @@ export default class ProductCard extends Component {
             <h4 className="price">${this.props.data.price}</h4>
           </div>
           <div className="buttons">
-            {/* <button className="button-buy" onClick={this.onClickHandler}> */}
             <button className="button-buy" onClick={this.openModalBascket}>
               <img src="/image/body/buy.svg"></img>
             </button>
@@ -100,7 +91,12 @@ export default class ProductCard extends Component {
 }
 
 ProductCard.propTypes = {
-  data: PropTypes.object,
-  onQuantityAdd: PropTypes.func,
-  onAddToFavorite: PropTypes.func,
+  data: PropTypes.shape({
+    img_url: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    isFavorite: PropTypes.bool,
+  }).isRequired,
+  onQuantityAdd: PropTypes.func.isRequired,
+  onFavQuatityAdd: PropTypes.func.isRequired,
 };

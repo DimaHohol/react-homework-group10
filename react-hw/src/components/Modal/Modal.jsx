@@ -1,30 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Modal.css";
 
-class Modal extends React.Component {
-  render() {
-    return (
-      <div>
-        <div className="overlay" onClick={this.closeModal}>
+function Modal(props) {
+  const [modalOpen, setModalOpen] = useState(true);
+
+  const closeModal = () => {
+    setModalOpen(false);
+    props.closeModal();
+  };
+
+  return (
+    <>
+      {modalOpen && (
+        <div className="overlay" onClick={closeModal}>
           <div className="modal">
             <div className="modal-body">
               <div className="modal-body-header">
                 <h3>Hello</h3>
               </div>
               <div className="modal-body-content">
-                <p>{this.props.text}</p>
+                <p>{props.text}</p>
               </div>
-
               <div className="modal-body-footer">
-                {this.props.add}
-                <button onClick={this.props.closeModal}>Close</button>
+                {props.add}
+                <button onClick={closeModal}>Close</button>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    );
-  }
+      )}
+    </>
+  );
 }
 
 export default Modal;

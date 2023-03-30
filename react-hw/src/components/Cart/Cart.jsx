@@ -23,5 +23,13 @@ export default class Cart extends Component {
 }
 
 Cart.propTypes = {
-  cartData: PropTypes.array,
+  text: PropTypes.string.isRequired,
+  cartData: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      quantity: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
