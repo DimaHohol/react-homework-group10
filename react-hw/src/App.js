@@ -1,44 +1,47 @@
-import { React, Component } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Cart from "./components/Cart/Cart";
 import data from "./data/data.json";
 import ProductList from "./components/ProductList/ProductList";
 
-export default class App extends Component {
-  state = {
-    cartItems: [],
-    cartItemsFavorite: [],
-  };
+export default function App() {
+  const [cartItems, setCartItems] = useState([]);
+  const [cartItemsFavorite, setCartItemsFavorite] = useState([]);
 
-  addToCart = (quantity, id) => {
+  const addToCart = (quantity, id) => {
     const product = data.products.filter((item) => item.id === id)[0];
     product.quantity = quantity;
-    this.setState((prevState) => ({
-      cartItems: [...prevState.cartItems, product],
-    }));
+    setCartItems((prevState) => [...prevState, product]);
   };
 
-  addToFavorite = (quantity, id) => {
+  const addToFavorite = (quantity, id) => {
     const product = data.products.filter((item) => item.id === id)[0];
     product.quantity = quantity;
     product.isFavorite = true;
-    this.setState((prevState) => ({
-      cartItemsFavorite: [...prevState.cartItemsFavorite, product],
-    }));
+    setCartItemsFavorite((prevState) => [...prevState, product]);
   };
 
-  componentDidMount() {
-    const storedState = this.getStoredState();
+  useEffect(() => {
+    const storedState = getStoredState();
     if (storedState) {
-      this.setState(storedState);
+      setCartItems(storedState.cartItems);
+      setCartItemsFavorite(storedState.cartItemsFavorite);
     }
-  }
+  }, []);
 
-  componentDidUpdate() {
-    this.setStoredState(this.state);
-  }
+  useEffect(() => {
+    setStoredState({ cartItems, cartItemsFavorite });
+  }, [cartItems, cartItemsFavorite]);
 
-  getStoredState() {
+  const setStoredState = (state) => {
+    try {
+      localStorage.setItem("myComponentState", JSON.stringify(state));
+    } catch (err) {
+      console.error("Error storing state:", err);
+    }
+  };
+
+  const getStoredState = () => {
     try {
       const storedState = localStorage.getItem("myComponentState");
       if (storedState !== null) {
@@ -48,75 +51,59 @@ export default class App extends Component {
       console.error("Error retrieving stored state:", err);
     }
     return null;
-  }
+  };
 
-  setStoredState(state) {
-    try {
-      localStorage.setItem("myComponentState", JSON.stringify(state));
-    } catch (err) {
-      console.error("Error storing state:", err);
-    }
-  }
+  return (
+    <>
+      <div className="main">
+        <div className="header">
+          <div className="header-logo">
+            <img className="header-logo-img" src="/image/header/Vector.svg" />
+            <div className="header-logo-text">GREENSHOP</div>
+          </div>
 
-  render() {
-    return (
-      <>
-        <div className="main">
-          <div className="header">
-            <div className="header-logo">
+          <div>
+            <a className="header-menu">Home</a>
+            <a className="header-menu">Shop</a>
+            <a className="header-menu">Blog</a>
+            <a className="header-menu">Contacts</a>
+          </div>
+
+          <div className="header-shop-menu">
+            <a className="header-shop-menu-bascket">
+              <div className="header-shop-menu-bascket-number">
+                {cartItemsFavorite.length}
+              </div>
               <img
-                className="header-logo-img"
-                src="/image/header/Vector.svg"
-              ></img>
-              <div className="header-logo-text">GREENSHOP</div>
-            </div>
-
-            <div>
-              <a className="header-menu">Home</a>
-              <a className="header-menu">Shop</a>
-              <a className="header-menu">Blog</a>
-              <a className="header-menu">Contacts</a>
-            </div>
-
-            <div className="header-shop-menu">
-              <a className="header-shop-menu-bascket">
-                <div className="header-shop-menu-bascket-number">
-                  {this.state.cartItemsFavorite.length}
-                </div>
-                <img
-                  className="header-shop-menu-img"
-                  src="/image/header/heart-svgrepo-com.svg"
-                ></img>
-                <div className="header-shop-menu-bascket-number">
-                  {this.state.cartItems.length}
-                </div>
-                <img
-                  className="header-shop-menu-img"
-                  src="/image/header/bascket.svg"
-                ></img>
-              </a>
-            </div>
-          </div>
-          <div className="info"></div>
-          <div className="body">
-            <div className="body-left">
-              <ProductList
-                onProductAdd={this.addToCart}
-                data={data.products}
-                onFavoriteAdd={this.addToFavorite}
+                className="header-shop-menu-img"
+                src="/image/header/heart-svgrepo-com.svg"
               />
-            </div>
-            <div className="body-right">
-              <Cart text={"Shoping Cart"} cartData={this.state.cartItems} />
-              <Cart
-                text={"Favorite Cart"}
-                cartData={this.state.cartItemsFavorite}
+              <div className="header-shop-menu-bascket-number">
+                {cartItems.length}
+              </div>
+              <img
+                className="header-shop-menu-img"
+                src="/image/header/bascket.svg"
               />
-            </div>
+            </a>
           </div>
-          <div className="footer"></div>
         </div>
-      </>
-    );
-  }
+        <div className="info"></div>
+        <div className="body">
+          <div className="body-left">
+            <ProductList
+              onProductAdd={addToCart}
+              data={data.products}
+              onFavoriteAdd={addToFavorite}
+            />
+          </div>
+          <div className="body-right">
+            <Cart text={"Shoping Cart"} cartData={cartItems} />
+            <Cart text={"Favorite Cart"} cartData={cartItemsFavorite} />
+          </div>
+        </div>
+        <div className="footer"></div>
+      </div>
+    </>
+  );
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import "./Modal.css";
 
 function Modal(props) {
@@ -32,5 +33,11 @@ function Modal(props) {
     </>
   );
 }
+
+Modal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+  add: PropTypes.node.isRequired,
+};
 
 export default Modal;

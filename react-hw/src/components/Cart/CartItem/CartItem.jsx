@@ -1,26 +1,34 @@
-import { Component } from "react";
 import PropTypes from "prop-types";
+import React, { useContext } from "react";
+// import { CartContext } from "./CartContext";
 import "./CartItem.css";
 
-export default class CartItem extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default function CartItem(props) {
+  const { item } = props;
+  // const { dispatch } = useContext(CartContext);
 
-  render() {
-    return (
-      <>
-        <div className="cart-item">
-          <div className="cart-item-info">
-            <p className="cart-item-info-name">{this.props.item.name}</p>
-            <p className="cart-item-info-price">${this.props.item.price}</p>
-          </div>
+  // const handleRemoveItem = () => {
+  //   dispatch({ type: "REMOVE_ITEM", payload: item.id });
+  // };
 
-          <p>{this.props.item.quantity}</p>
+  return (
+    <>
+      <div className="cart-item">
+        <div className="cart-item-info">
+          <p className="cart-item-info-name">{item.name}</p>
+          <p className="cart-item-info-price">${item.price}</p>
         </div>
-      </>
-    );
-  }
+
+        <div className="cart-item-controls">
+          {/* <button className="cart-item-remove" onClick={handleRemoveItem}>
+            Remove
+          </button> */}
+
+          {/* <p className="cart-item-quantity">{item.quantity}</p> */}
+        </div>
+      </div>
+    </>
+  );
 }
 
 CartItem.propTypes = {

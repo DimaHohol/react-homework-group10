@@ -1,25 +1,21 @@
-import { Component } from "react";
+import PropTypes from "prop-types";
+import React from "react";
 import CartItem from "./CartItem/CartItem";
 import "../Cart/CartItem/CartItem.css";
-import PropTypes from "prop-types";
 
-export default class Cart extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default function Cart(props) {
+  const { text, cartData } = props;
 
-  render() {
-    return (
-      <>
-        <p>{this.props.text}</p>
-        <div className="table">
-          {this.props.cartData.map((item) => (
-            <CartItem item={item} key={Math.random()} />
-          ))}
-        </div>
-      </>
-    );
-  }
+  return (
+    <>
+      <p>{text}</p>
+      <div className="table">
+        {cartData.map((item) => (
+          <CartItem item={item} key={Math.random()} />
+        ))}
+      </div>
+    </>
+  );
 }
 
 Cart.propTypes = {

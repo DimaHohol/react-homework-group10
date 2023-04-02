@@ -72,7 +72,7 @@
       "name": "Barberton Daisy",
       "price": 119,
       "img_url": "/image/plants-img/1.svg",
-      "id": "1",
+      "id": "10",
       "discount": 10,
       "isFavorite": false
     },
@@ -80,7 +80,7 @@
       "name": "Angel Wing Begonia",
       "price": 169,
       "img_url": "/image/plants-img/2.svg",
-      "id": "2",
+      "id": "11",
       "discount": 5,
       "isFavorite": false
     },
@@ -88,7 +88,7 @@
       "name": "African Violet",
       "price": 199,
       "img_url": "/image/plants-img/3.svg",
-      "id": "3",
+      "id": "12",
       "discount": 5,
       "isFavorite": false
     }
