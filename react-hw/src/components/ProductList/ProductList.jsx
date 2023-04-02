@@ -25,8 +25,15 @@ function ProductList(props) {
 export default ProductList;
 
 ProductList.propTypes = {
-  id: PropTypes.string,
-  data: PropTypes.array,
-  addToFavorite: PropTypes.func,
-  onProductAdd: PropTypes.func,
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      img_url: PropTypes.string.isRequired,
+      isFavorite: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  onProductAdd: PropTypes.func.isRequired,
+  onFavoriteAdd: PropTypes.func.isRequired,
 };
