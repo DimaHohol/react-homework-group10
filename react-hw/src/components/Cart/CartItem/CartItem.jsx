@@ -1,40 +1,29 @@
 import PropTypes from "prop-types";
-import React, { useContext } from "react";
-// import { CartContext } from "./CartContext";
 import "./CartItem.css";
+import React, { useState } from "react";
 
-export default function CartItem(props) {
-  const { item } = props;
-  // const { dispatch } = useContext(CartContext);
-
-  // const handleRemoveItem = () => {
-  //   dispatch({ type: "REMOVE_ITEM", payload: item.id });
-  // };
-
+function CartItem(props) {
   return (
     <>
       <div className="cart-item">
         <div className="cart-item-info">
-          <p className="cart-item-info-name">{item.name}</p>
-          <p className="cart-item-info-price">${item.price}</p>
+          {props.emptiness}
+          <p className="cart-item-info-name">{props.item.name}</p>
+          <p className="cart-item-info-price">${props.item.price}</p>
         </div>
 
-        <div className="cart-item-controls">
-          {/* <button className="cart-item-remove" onClick={handleRemoveItem}>
-            Remove
-          </button> */}
-
-          {/* <p className="cart-item-quantity">{item.quantity}</p> */}
-        </div>
+        <p>{props.item.quantity}</p>
       </div>
     </>
   );
 }
 
+export default CartItem;
+
 CartItem.propTypes = {
   item: PropTypes.shape({
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
-    quantity: PropTypes.number.isRequired,
+    quantity: PropTypes.string.isRequired,
   }).isRequired,
 };

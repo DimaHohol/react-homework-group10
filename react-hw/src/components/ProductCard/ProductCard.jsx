@@ -1,16 +1,15 @@
-import React, { useState } from "react";
 import "./ProductCard.css";
 import Modal from "../Modal/Modal";
 import PropTypes from "prop-types";
+import React, { useState } from "react";
 
 function ProductCard(props) {
   const [value, setValue] = useState("");
-  const [isFavorite, setIsFavorite] = useState(props.data.isFavorite || false);
+  const [isFavorite, setIsFavorite] = useState(props.data.isFavorite);
   const [buttonColor, setButtonColor] = useState(
-    props.data.isFavorite ? "red" : "gray"
+    props.data.isFavorite ? "green" : "white"
   );
-  const [modalAddToBasket, setModalAddToBasket] = useState(false);
-  const [modalAddToFavorite, setModalAddToFavorite] = useState(false);
+  const [modalAddToBascket, setModalAddToBascket] = useState(false);
 
   const onChangeInput = (e) => {
     setValue(e.target.value);
@@ -19,38 +18,33 @@ function ProductCard(props) {
   const onClickHandler = () => {
     props.onQuantityAdd(value);
     setValue("");
-    setModalAddToBasket(false);
-    setModalAddToFavorite(false);
+    setModalAddToBascket(false);
   };
 
   const onClickHandlerFav = () => {
     props.onFavQuatityAdd(value);
     setIsFavorite(true);
-    setButtonColor("red");
+    setButtonColor("green");
   };
 
-  const openModalBasket = () => {
-    setModalAddToBasket(true);
-  };
-
-  const openModalFavorite = () => {
-    setModalAddToFavorite(true);
+  const openModalBascket = () => {
+    setModalAddToBascket(true);
   };
 
   const closeModal = () => {
-    setModalAddToBasket(false);
-    setModalAddToFavorite(false);
+    setModalAddToBascket(false);
   };
 
   return (
     <>
-      {modalAddToBasket && (
+      {modalAddToBascket && (
         <Modal
           closeModal={closeModal}
-          text={"Add this product to Shopping Cart ?"}
+          text={"Add this product to Shoping Cart ?"}
           add={<button onClick={onClickHandler}>Add</button>}
         />
       )}
+
       <div className="cart">
         <div className="cart-img">
           <button
@@ -61,6 +55,7 @@ function ProductCard(props) {
           </button>
         </div>
         <img className="img" src={props.data.img_url}></img>
+
         <div className="cart-name">
           <h4 className="name">{props.data.name}</h4>
         </div>
@@ -68,7 +63,7 @@ function ProductCard(props) {
           <h4 className="price">${props.data.price}</h4>
         </div>
         <div className="buttons">
-          <button className="button-buy" onClick={openModalBasket}>
+          <button className="button-buy" onClick={openModalBascket}>
             <img src="/image/body/buy.svg"></img>
           </button>
         </div>
@@ -76,6 +71,8 @@ function ProductCard(props) {
     </>
   );
 }
+
+export default ProductCard;
 
 ProductCard.propTypes = {
   data: PropTypes.shape({
@@ -87,5 +84,3 @@ ProductCard.propTypes = {
   onQuantityAdd: PropTypes.func.isRequired,
   onFavQuatityAdd: PropTypes.func.isRequired,
 };
-
-export default ProductCard;
